@@ -301,6 +301,7 @@
   }
 
 
+  // Register as module
   define("seajs-combo-debug", [], {})
 
 })(seajs);
