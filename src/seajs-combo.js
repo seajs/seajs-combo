@@ -11,6 +11,7 @@
 
   var comboSyntax = ["??", ","]
   var comboMaxLength = 2000
+  var comboExcludes
 
 
   seajs.on("load", setComboHash)
@@ -25,7 +26,7 @@
     data.comboSyntax && (comboSyntax = data.comboSyntax)
     data.comboMaxLength && (comboMaxLength = data.comboMaxLength)
 
-    var comboExcludes = data.comboExcludes
+    comboExcludes = data.comboExcludes
     var needComboUris = []
 
     for (var i = 0; i < len; i++) {
@@ -38,8 +39,7 @@
       var mod = Module.get(uri)
 
       // Remove fetching and fetched uris, excluded uris, combo uris
-      if (mod.status < FETCHING &&
-          (!comboExcludes || !comboExcludes.test(uri)) && !isComboUri(uri)) {
+      if (mod.status < FETCHING && !isExcluded(uri) && !isComboUri(uri)) {
         needComboUris.push(uri)
       }
     }
@@ -282,6 +282,14 @@
   function getExt(file) {
     var p = file.lastIndexOf(".")
     return p >= 0 ? file.substring(p) : ""
+  }
+
+  function isExcluded(uri) {
+    if (comboExcludes) {
+      return comboExcludes.test ?
+          comboExcludes.test(uri) :
+          comboExcludes(uri)
+    }
   }
 
   function isComboUri(uri) {
