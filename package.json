@@ -8,5 +8,8 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/seajs/seajs-combo.git"
+  },
+  "devDependencies": {
+    "seatools": "*"
   }
 }

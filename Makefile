@@ -1,15 +1,14 @@
 
 build:
-	@rm -rf dist
-	@mkdir dist
-	@sed "s/seajs-combo/seajs-combo-debug/" src/seajs-combo.js >dist/seajs-combo-debug.js
-	@sed "s/data\.test/false/" src/seajs-combo.js >dist/t.js
-	@uglifyjs dist/t.js -o dist/seajs-combo.js -mc
-	@rm dist/t.js
-	@make size
+	@seatools build
 
 test:
-	@make test -C ../seajs
+	@seatools site
+	@seatools test --local
+	@seatools test --http
+
+totoro:
+	@seatools test --totoro
 
 size:
-	@../seajs/tools/size.sh seajs-combo
+	@seatools size
