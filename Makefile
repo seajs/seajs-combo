@@ -8,6 +8,7 @@ test:
 	@seatools test --http
 
 totoro:
+	@seatools site
 	@seatools test --totoro
 
 size:
