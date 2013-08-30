@@ -11,5 +11,8 @@
   },
   "devDependencies": {
     "seatools": "*"
+  },
+  "spm": {
+    "output": ["seajs-combo.js"]
   }
 }
