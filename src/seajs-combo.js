@@ -1,8 +1,7 @@
 /**
  * The Sea.js plugin for concatenating HTTP requests
  */
-(function(seajs) {
-
+define(function(){
   var Module = seajs.Module
   var FETCHING = Module.STATUS.FETCHING
 
@@ -308,9 +307,4 @@
     test.paths2hash = paths2hash
   }
 
-
-  // Register as module
-  define("seajs-combo", [], {})
-
-})(seajs);
-
+});
