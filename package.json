@@ -1,7 +1,7 @@
 {
   "family": "seajs",
   "name": "seajs-combo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Sea.js plugin for concatenating HTTP requests",
   "keywords": ["seajs", "plugin", "combo"],
   "author": "Frank Wang <lifesinger@gmail.com>",

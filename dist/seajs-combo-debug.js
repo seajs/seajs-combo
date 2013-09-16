@@ -1,7 +1,7 @@
 /**
  * The Sea.js plugin for concatenating HTTP requests
  */
-define("seajs/seajs-combo/1.0.0/seajs-combo-debug", [], function() {
+define("seajs/seajs-combo/1.0.1/seajs-combo-debug", [], function() {
     var Module = seajs.Module;
     var FETCHING = Module.STATUS.FETCHING;
     var data = seajs.data;
@@ -258,4 +258,4 @@ define("seajs/seajs-combo/1.0.0/seajs-combo-debug", [], function() {
     }
 });
 
-seajs.use("seajs/seajs-combo/1.0.0/seajs-combo-debug");
+seajs.require("seajs/seajs-combo/1.0.1/seajs-combo-debug");
