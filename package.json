@@ -12,7 +12,9 @@
   "devDependencies": {
     "seatools": "*"
   },
-  "spm": {
-    "output": ["seajs-combo.js"]
+  "config": {
+    "plugin-concat": [
+      "seajs-combo.js"
+    ]
   }
 }
