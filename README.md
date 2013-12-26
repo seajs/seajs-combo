@@ -4,9 +4,6 @@ seajs-combo
 A Sea.js plugin for concatenating HTTP requests
 
 
-> seajs-combo@1.0.1+ is compatible with seajs@2.2.0+ !
-
-
 Install
 -------
 
