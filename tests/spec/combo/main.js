@@ -1,9 +1,11 @@
 
 seajs.config({
   base: "./combo/",
-  test: true,
-  preload: ["../../dist/seajs-combo-debug"]
+  test: true
+//  preload: ["../../dist/seajs-combo-debug"]
 })
 
-seajs.use("init")
+seajs.use("../../dist/seajs-combo-debug", function() {
+  seajs.use("init")
+});
 
