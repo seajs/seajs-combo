@@ -11,6 +11,7 @@ var comboHash = data.comboHash = {}
 var comboSyntax = ["??", ","]
 var comboMaxLength = 2000
 var comboExcludes
+var comboSuffix
 
 
 seajs.on("load", setComboHash)
@@ -24,6 +25,7 @@ function setComboHash(uris) {
 
   data.comboSyntax && (comboSyntax = data.comboSyntax)
   data.comboMaxLength && (comboMaxLength = data.comboMaxLength)
+  data.comboSuffix && (comboSuffix = data.comboSuffix)
 
   comboExcludes = data.comboExcludes
   var needComboUris = []
@@ -225,7 +227,14 @@ function paths2hash(paths) {
 }
 
 function setHash(root, files) {
-  var comboPath = root + comboSyntax[0] + files.join(comboSyntax[1])
+  var copy = []
+  for (var i = 0, len = files.length; i < len; i++) {
+    copy[i] = files[i].replace(/\?.*$/, '')
+  }
+  var comboPath = root + comboSyntax[0] + copy.join(comboSyntax[1])
+  if(comboSuffix) {
+    comboPath += comboSuffix
+  }
   var exceedMax = comboPath.length > comboMaxLength
 
   // http://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url
