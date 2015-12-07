@@ -11,6 +11,7 @@ var comboHash = data.comboHash = {}
 
 var comboSyntax = ["??", ","]
 var comboMaxLength = 2000
+var comboMaxFiles = 200
 var comboExcludes
 var comboSuffix
 
@@ -27,6 +28,7 @@ function setComboHash(uris) {
   data.comboSyntax && (comboSyntax = data.comboSyntax)
   data.comboMaxLength && (comboMaxLength = data.comboMaxLength)
   data.comboSuffix && (comboSuffix = data.comboSuffix)
+  data.comboMaxFiles && (comboMaxFiles = data.comboMaxFiles)
 
   comboExcludes = data.comboExcludes
   var needComboUris = []
@@ -232,6 +234,13 @@ function setHash(root, files) {
   for (var i = 0, len = files.length; i < len; i++) {
     copy[i] = files[i].replace(/\?.*$/, '')
   }
+  // server limit file num
+  if (files.length > comboMaxFiles) {
+    setHash(root, copy.splice(0, comboMaxFiles))
+    setHash(root, copy)
+    return
+  }
+
   var comboPath = root + comboSyntax[0] + copy.join(comboSyntax[1])
   if(comboSuffix) {
     comboPath += comboSuffix
